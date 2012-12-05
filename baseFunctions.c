@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <limits.h>
 
 
 char execute (char *input);
@@ -44,7 +45,7 @@ void cd (char *directory)
 
 char *pwd ()
 {
-  char *currentDir = getcwd(0,0);
+  char *currentDir = getcwd(0, PATH_MAX);
   if (!currentDir) perror("getcwd");
   else return currentDir;
   return 0;
