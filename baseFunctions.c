@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <limits.h>
 
+#include "ps.h"
 
 char execute (char *input);
 void cd (char *directory);
@@ -19,7 +20,20 @@ char execute(char *input)
   if (!data) data = strtok(NULL, " ");
     
   if (!(strcmp(instruction, "cd"))) cd(data);
-  else if (!strcmp(instruction, "pwd"))printf("%s\n",pwd());
+  else  if (!(strcmp(instruction, "ps"))) 
+    {
+      char token='0';
+      if (data!=NULL)
+	{
+	  if (!(strcmp(data, "-A")))token = 'A';
+	}
+      ps(token);
+    }
+
+   if (!strcmp(instruction, "pwd"))
+    {
+      printf("%s\n",pwd());
+    }
   else if (!(strcmp(instruction, "exit")))return -1;
   return 1;
 }

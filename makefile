@@ -1,4 +1,4 @@
-OBJS = shell.c baseFunctions.c
+OBJS = shell.c baseFunctions.c ps.c
 OUTPUT = shell
 
 CC = gcc
